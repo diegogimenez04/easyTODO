@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>simple page</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="styles
+    <style>
+
+
+    </style>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
+</head>
+<body>
+<div class="card">
+    <table class="highlight" >
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Fecha</th>
+            <th>Tuit</th>
+            <th>Likes</th>
+        </tr>
+    </thead>
+    <tbody>
+            {% for task in task %}
+                <tr>
+                <td>{{ task.datetime }}</td>
+                {% if task.todo|length < 50 %}
+                    <td>{{ task.todo }}</td>
+                {% else %}
+                    <td>{{ task.todo|truncatechars:50  }}</td>
+                {% endif %}
+                </tr>
+            {% endfor %}
+    </tbody>
+    </table>
+
+</div>
+</body>
+</html>
