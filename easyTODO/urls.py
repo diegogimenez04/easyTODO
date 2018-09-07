@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from TODOapp.views import show_todo
+from TODOapp.views import (show_todo, gaurdar_task)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('task', show_todo, name='todo'),
+    path('save', gaurdar_task, name='gaurdar_task')
 ]
