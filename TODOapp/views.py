@@ -6,5 +6,6 @@ from TODOapp.models import Task
 
 def show_todo(request):
 	diccionario = {}
-	diccionario['task'] = Task.objects.all()
+	diccionario['ts'] = Task.objects.all()
 	return render(request, 'start.html', diccionario)
+

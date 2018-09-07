@@ -18,20 +18,18 @@
     <table class="highlight" >
     <thead>
         <tr>
-            <th>User</th>
             <th>Fecha</th>
-            <th>Tuit</th>
-            <th>Likes</th>
+            <th>TODO</th>
+            <th>Borrar</th>
+            <th>Archivar</th>
         </tr>
     </thead>
     <tbody>
-            {% for task in task %}
+            {% for task in ts %}
                 <tr>
                 <td>{{ task.datetime }}</td>
                 {% if task.todo|length < 50 %}
                     <td>{{ task.todo }}</td>
-                {% else %}
-                    <td>{{ task.todo|truncatechars:50  }}</td>
                 {% endif %}
                 </tr>
             {% endfor %}
