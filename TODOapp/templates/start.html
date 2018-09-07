@@ -14,6 +14,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js"></script>
 </head>
 <body>
+<div class="card m12">
+    <form action="save" method="POST">
+        {% csrf_token %}
+        <div class="card-content blue-text">
+            <span class="card-title">Agregar tarea</span>
+            <div class="input-field col s12">
+                <textarea name="content-tweet" id="content-tweet" class="materialize-textarea"></textarea>
+                <label for="content-tweet"></label>
+            </div>
+        </div>
+        <div class="card-action">
+            <button class="waves-effect" type="submit">Agregar</button>
+        </div>
+    </form>
+</div>
+<div class="card"></div>
 <div class="card">
     <table class="highlight" >
     <thead>
