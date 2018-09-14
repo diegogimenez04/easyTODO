@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Archivados</title>
+</head>
+<body>
+
+                <form action="task" method="POST">
+                {% csrf_token %}
+                <td><button class="waves-effect green-text center" type="submit">Volver</button></td></form>
+<div class="card"></div>
+<div class="card">
+	<table class="highlight" >
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>TODO</th>
+            <th>Borrar</th>
+            <th>Archivar</th>
+        </tr>
+    </thead>
+    <tbody>
+            {% for task in ts %}
+            {% if not task.archive %}
+                <tr>
+                {% if task.datetime %}
+                <td>{{ task.datetime }}</td>
+                {% endif %}
+                {% if task.todo %}
+                    <td>{{ task.todo }}</td>
+                {% endif %}
+                <form action="desarchivar" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name='desarchivar' value="{{ task.id }}">
+                <td><button class="waves-effect green-text center" type="submit">UNARCHIVE</button></td></form>
+                </tr>
+            {% endif %}
+            {% endfor %}
+    </tbody>
+    </table>
+</div>
+</div>
+
+</body>
+</html>

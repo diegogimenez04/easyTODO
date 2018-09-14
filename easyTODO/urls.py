@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from TODOapp.views import (show_todo, gaurdar_task, borrar, redirect_show, archivar)
+from TODOapp.views import (show_todo, gaurdar_task, borrar, redirect_show, archivar, desarchivar, show_todo_archivados)
 
 
 urlpatterns = [
@@ -24,5 +24,7 @@ urlpatterns = [
     path('save', gaurdar_task, name='save'),
     path('borrar', borrar, name='borrar'),
     path('archivar', archivar, name='archivar'),
+    path('archivados', show_todo_archivados, name='desarchivados'),
+    path('desarchivar', desarchivar, name='desarchivar'),
     path('', redirect_show, name='redirect_show')
 ]

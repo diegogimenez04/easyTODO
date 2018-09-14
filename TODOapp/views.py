@@ -45,3 +45,21 @@ def archivar(request):
 			return redirect('/task')
 		else:
 			return HttpResponse("No content")
+
+def ir_a_archivados(request):
+	return redirect('/archivados')
+
+def desarchivar(request):
+	if request.POST:
+		contenido_a_desarchivar = request.POST.get('desarchivar', None)
+		if contenido_a_desarchivar:
+			aux = Task.objects.get(id=contenido_a_desarchivar)
+			aux.archive = True
+			aux.save()
+			ir_a_archivados(request)
+		return redirect('/archivados')
+
+def show_todo_archivados(request):
+	diccionario = {}
+	diccionario['ts'] = Task.objects.all()
+	return render(request, 'archivados.html', diccionario)
