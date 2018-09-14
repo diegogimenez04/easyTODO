@@ -20,7 +20,7 @@
         <div class="card-content green-text">
             <span class="card-title">Agregar tarea</span>
             <div class="input-field col s12">
-                <textarea name="content-task" id="content-task" class="materialize-textarea"></textarea>
+                <input name="content-task" id="content-task" class="materialize-textarea"></input>
                 <label for="content-tweet"></label>
             </div>
         </div>
@@ -42,12 +42,22 @@
     </thead>
     <tbody>
             {% for task in ts %}
+            {% if task.archive %}
                 <tr>
                 <td>{{ task.datetime }}</td>
                 {% if task.todo|length < 50 %}
                     <td>{{ task.todo }}</td>
                 {% endif %}
+                <form action="borrar" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name='contenido' value="{{ task.id }}">
+                <td><button class="waves-effect green-text center" type="submit">DELETE</button></td></form>
+                <form action="archivar" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name='contenido' value="{{ task.id }}">
+                <td><button class="waves-effect green-text center" type="submit">ARCHIVE</button></td></form>
                 </tr>
+            {% endif %}
             {% endfor %}
     </tbody>
     </table>
