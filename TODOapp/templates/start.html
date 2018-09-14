@@ -44,8 +44,10 @@
             {% for task in ts %}
             {% if task.archive %}
                 <tr>
+                {% if task.datetime %}
                 <td>{{ task.datetime }}</td>
-                {% if task.todo|length < 50 %}
+                {% endif %}
+                {% if task.todo %}
                     <td>{{ task.todo }}</td>
                 {% endif %}
                 <form action="borrar" method="POST">
